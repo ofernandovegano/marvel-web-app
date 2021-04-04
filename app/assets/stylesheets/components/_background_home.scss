@@ -1,5 +1,22 @@
-#background-home{
+#background-home {
+  display: flex;
   margin: 0;
   padding: 0;
   height: 100vh;
+}
+.call-to-login {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.background-home-button {
+  padding: 0.5rem 1.2rem;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.background-home-paragraph {
+  margin: auto;
+}
+#defaultCanvas0 {
+  opacity: 0.5;
 }

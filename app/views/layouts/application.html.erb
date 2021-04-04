@@ -13,8 +13,11 @@
   </head>
 
   <body>
+    <% unless controller.controller_name == "pages" && controller.action_name == "home" %>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+    <% end %>
     <div class="container">
-
       <%= yield %>
     </div>
   </body>
