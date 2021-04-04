@@ -1,10 +1,14 @@
 <%if current_user.present? %>
-  <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
+
   <div id="root"> </div>
 
 <%else%>
-<div id="background-home"></div>
+<div id="background-home">
+  <div class="call-to-login">
+    <p class="background-home-paragraph">Login to get to know your favorite comics and characters</p>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-success background-home-button" %>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
