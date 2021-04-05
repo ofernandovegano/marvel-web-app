@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% unless controller.controller_name == "pages" && controller.action_name == "home" %>
+    <% unless controller.controller_name == "pages" && controller.action_name == "home" && !current_user.present? %>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
     <% end %>
