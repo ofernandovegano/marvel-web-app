@@ -30,7 +30,7 @@ ReactDOM.render(
     <Router history={history}>
       <div className="view-container">
         <Switch>
-          <Route path="/index" exact component={App} />
+          <Route path="/" exact component={App} />
         </Switch>
       </div>
     </Router>
