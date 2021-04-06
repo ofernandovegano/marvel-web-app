@@ -7,8 +7,6 @@ import { fetchComics } from '../actions';
 class MarvelIndex extends Component {
   componentWillMount() {
     this.props.fetchComics();
-    console.log(this.props.comics)
-    console.log("hello")
   }
 
   render() {
