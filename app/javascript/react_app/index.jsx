@@ -9,16 +9,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createHistory as history } from 'history';
 
 // internal modules
-import App from './components/app';
+import MarvelIndex from './containers/marvel_index';
+
+//Reducers
+import comicsReducer from './reducers/comics_reducer.js';
 
 // Initial State
 const initialState = {
-  heroes: []
+  comics: []
+  // characters: []
 };
 
 // State and reducers
 const reducers = combineReducers({
-  heroes: (state = null, action) => state
+  comics: comicsReducer
 });
 
 //Middlewares
@@ -30,7 +34,7 @@ ReactDOM.render(
     <Router history={history}>
       <div className="view-container">
         <Switch>
-          <Route path="/" exact component={App} />
+          <Route path="/" exact component={MarvelIndex} />
         </Switch>
       </div>
     </Router>
