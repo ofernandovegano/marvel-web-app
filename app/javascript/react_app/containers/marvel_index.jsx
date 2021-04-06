@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+// import ComicsIndex from './comics_index';
 
 import { fetchComics } from '../actions';
 
@@ -11,8 +14,19 @@ class MarvelIndex extends Component {
 
   render() {
     return (
-      <div className="marvel">
-        <p>React + Redux starter</p>
+      <div className="marvel-container">
+        <div className="marvel-index">
+          <div className="comics">
+            <Link to="/comics">
+            <p>To comics index</p>
+            </Link>
+          </div>
+          <div className="characters">
+            <Link to="/characters">
+              <p>To Characters index</p>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   };
