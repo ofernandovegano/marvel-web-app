@@ -11,6 +11,7 @@ import { createHistory as history } from 'history';
 // internal modules
 import MarvelIndex from './containers/marvel_index';
 import ComicsIndex from './containers/comics_index';
+import ComicsShow from './containers/comics_show';
 import CharactersIndex from './containers/characters_index';
 
 
@@ -41,6 +42,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/" exact component={MarvelIndex} />
           <Route path="/comics" exact component={ComicsIndex} />
+          <Route path="/comics/:id" component={ComicsShow} />
           <Route path="/characters" exact component={CharactersIndex} />
         </Switch>
       </div>
