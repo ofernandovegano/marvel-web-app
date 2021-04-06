@@ -10,19 +10,24 @@ import { createHistory as history } from 'history';
 
 // internal modules
 import MarvelIndex from './containers/marvel_index';
+import ComicsIndex from './containers/comics_index';
+import CharactersIndex from './containers/characters_index';
+
 
 //Reducers
 import comicsReducer from './reducers/comics_reducer.js';
+import charactersReducer from './reducers/characters_reducer.js';
 
 // Initial State
 const initialState = {
-  comics: []
-  // characters: []
+  comics: [],
+  characters: []
 };
 
 // State and reducers
 const reducers = combineReducers({
-  comics: comicsReducer
+  comics: comicsReducer,
+  characters: charactersReducer
 });
 
 //Middlewares
@@ -35,6 +40,8 @@ ReactDOM.render(
       <div className="view-container">
         <Switch>
           <Route path="/" exact component={MarvelIndex} />
+          <Route path="/comics" exact component={ComicsIndex} />
+          <Route path="/characters" exact component={CharactersIndex} />
         </Switch>
       </div>
     </Router>
