@@ -11,7 +11,7 @@ let timeStamp = Math.floor(Date.now() / 1000)
 let md5Key = md5(`${timeStamp}${REACT_APP_MARVEL_PRIVATE_KEY}${REACT_APP_MARVEL_PUBLIC_KEY}`)
 
 export function fetchComics() {
-  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}`;
+  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=50`;
   const promise = fetch(url)
     .then(r => r.json());
 
