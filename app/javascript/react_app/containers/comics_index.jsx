@@ -13,11 +13,11 @@ class ComicsIndex extends Component {
 
   render() {
     return (
-      <div className="Comics">
+      <div className="comics-container">
         <Link to="/">
           <p>Back to Marvel Index</p>
         </Link>
-        <p>Comics Page</p>
+
       </div>
     );
   };

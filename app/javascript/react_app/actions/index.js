@@ -2,6 +2,8 @@ import md5 from 'md5';
 import dotenv from "dotenv";
 dotenv.config()
 
+export const FETCH_COMICS = 'FETCH_COMICS';
+
 console.log(process.env)
 const BASE_URL = 'https://gateway.marvel.com/v1/public/';
 const { REACT_APP_MARVEL_PRIVATE_KEY, REACT_APP_MARVEL_PUBLIC_KEY} = process.env
@@ -17,7 +19,7 @@ export function fetchComics() {
     .then(r => r.json());
 
   return {
-    type: 'FETCH_COMICS',
+    type: FETCH_COMICS,
     payload: promise // Will be resolved by redux-promise
   };
 }
