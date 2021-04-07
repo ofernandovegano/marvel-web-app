@@ -18,8 +18,9 @@ class CharactersIndex extends Component {
           <p>Back to Marvel Index</p>
         </Link>
         <div className="characters">
+          {/* filter images not available before map: "4c002e0305708" is a picture that shows "image not available" */}
           {this.props.characters.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
-            .filter(character => character.thumbnail.path.substring(44, 63) !== "4c002e0305708")
+              .filter(character => character.thumbnail.path.substring(44, 63) !== "4c002e0305708") 
             .map((character) => {
             return (
               < div key = { character.id } className = "character" >
