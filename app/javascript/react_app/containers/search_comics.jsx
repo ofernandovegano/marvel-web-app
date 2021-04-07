@@ -10,7 +10,7 @@ class SearchComics extends Component {
   }
 
   componentDidMount() {
-    this.messageBox.focus();
+    this.inputBox.focus();
   }
 
   handleChange = (event) => {
@@ -25,16 +25,22 @@ class SearchComics extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="channel-editor">
-        <input
-          ref={input => this.messageBox = input}
-          type="text"
-          className="form-control"
-          autoComplete="off"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Send</button>
+      <form onSubmit={this.handleSubmit} className="search-form">
+      <div className="row search-row">
+        <div className="col-6">
+          <input
+            ref={input => this.inputBox = input}
+            type="text"
+            className="form-control"
+            autoComplete="off"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div className="col-2">
+          <button type="submit" class='btn btn-light btn-search'>Serch Comics</button>
+        </div>
+      </div>
       </form>
     );
   }
