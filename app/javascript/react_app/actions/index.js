@@ -13,7 +13,7 @@ let md5Key = md5(`${timeStamp}${REACT_APP_MARVEL_PRIVATE_KEY}${REACT_APP_MARVEL_
 
 // Comics fetch API
 export function fetchComics() {
-  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=50`;
+  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100`;
   const promise = fetch(url)
     .then(r => r.json());
 
@@ -26,7 +26,7 @@ export function fetchComics() {
 
 //Caracters fatch API
 export function fetchCharacters() {
-  const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=50`;
+  const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100`;
   const promise = fetch(url)
     .then(r => r.json());
 

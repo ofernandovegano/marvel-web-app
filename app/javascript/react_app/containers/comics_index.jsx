@@ -18,13 +18,14 @@ class ComicsIndex extends Component {
           <p>Back to Marvel Index</p>
         </Link>
         <div className="comics">
-            {this.props.comics.map((comic) => {
+          {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
+            .map((comic) => {
               return (
               < div key = { comic.id } className = "comic" >
               
                 <Link to={`/comics/${comic.id}`} key={comic.id}>
                   < div>
-                    {console.log(comic)}
+                    {console.log(comic.thumbnail.path.substring(44, 63))}
                     <div className="comic-img-div">
                         <img src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`} className="comic-img" />
                       
