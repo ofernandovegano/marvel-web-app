@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import SearchComics from './search_comics';
 
 import { fetchComics } from '../actions';
 
@@ -17,6 +18,7 @@ class ComicsIndex extends Component {
         <Link to="/">
           <p>Back to Marvel Index</p>
         </Link>
+        < SearchComics />
         <div className="comics">
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
             .map((comic) => {
