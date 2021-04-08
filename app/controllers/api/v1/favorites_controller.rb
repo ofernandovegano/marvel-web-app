@@ -9,7 +9,7 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def add_to_favorite_characters
-    favorite_character = current_user.favorite_characters.build(character_id: params[:id])
+    favorite_character = current_user.favorite_characters.build(character_id: params[:id], image_url: params[:image_url], image_type: params[:image_type])
     favorite_character.user = current_user
     favorite_character.save
     render json: favorite_character # see favorite_character.as_json method

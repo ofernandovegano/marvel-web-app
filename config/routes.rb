@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post '/favorite_comic', to: 'favorites#add_to_favorite_comics'
+      post '/favorite_character', to: 'favorites#add_to_favorite_characters'
     end
   end
 end
