@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import SearchCharacters from './search_characters';
+
 
 import { fetchCharacters } from '../actions';
 
@@ -17,6 +19,7 @@ class CharactersIndex extends Component {
         <Link to="/">
           <p>Back to Marvel Index</p>
         </Link>
+        < SearchCharacters />
         <div className="characters">
           {/* filter images not available before map: "4c002e0305708" is a picture that shows "image not available" */}
           {this.props.characters.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
