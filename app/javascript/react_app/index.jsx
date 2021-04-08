@@ -13,6 +13,7 @@ import MarvelIndex from './containers/marvel_index';
 import ComicsIndex from './containers/comics_index';
 import ComicsShow from './containers/comics_show';
 import CharactersIndex from './containers/characters_index';
+import CharactersShow from './containers/characters_show';
 
 
 //Reducers
@@ -44,6 +45,8 @@ ReactDOM.render(
           <Route path="/comics" exact component={ComicsIndex} />
           <Route path="/comics/:id" component={ComicsShow} />
           <Route path="/characters" exact component={CharactersIndex} />
+          <Route path="/characters/:id" exact component={CharactersShow} />
+
         </Switch>
       </div>
     </Router>
