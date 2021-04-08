@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
   end
 
-  def favorites
+  def user_favorites
     @favorite_characters = User.find(current_user.id)
   end
 end

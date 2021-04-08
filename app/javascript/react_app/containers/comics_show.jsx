@@ -5,17 +5,19 @@ import { Link, withRouter } from 'react-router-dom';
 
 import SearchComics from './search_comics';
 
+import { addToFavorites } from '../actions';
+
+
 class ComicsShow extends Component {
 
+  handleClick = () => {
+    this.props.addToFavorites(this.props.comic, 'comic', () => {
+      this.props.history.push('/')});
+  }
 
   render() {
-    if (!car) {
-    return (
-      <Link to="/comics">Back to Comics</Link>
-    }
     return (
       <div className="comic-show-container">
-        {const comic = this.props.comic}
         <Link to="/comics">
           <p>Back to Comics</p>
         </Link>
@@ -24,9 +26,11 @@ class ComicsShow extends Component {
 
         <div className="comic-show">
 
-          { comic.title }
+          { this.props.comic.title }
           
-        < div>
+        </div>
+
+        <button onClick={ this.handleClick }>Add To Favorites</button>
 
       </div>
     );
@@ -40,8 +44,8 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-{/* function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addToFavorites }, dispatch);
-} */}
+}
 
-export default withRouter(connect(mapStateToProps, null)(ComicsShow));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ComicsShow));

@@ -6,6 +6,7 @@ export const FETCH_COMICS = 'FETCH_COMICS';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const SEARCH_COMICS = 'SEARCH_COMICS';
 export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
+export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 
 
 console.log(process.env)
@@ -39,7 +40,7 @@ export function fetchCharacters() {
   };
 }
 
-//Search comics
+//SEARCH_COMICS
 export function searchComics(inputComicsValue) {
   const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&titleStartsWith=${inputComicsValue}`;
   const promise = fetch(url)
@@ -50,7 +51,7 @@ export function searchComics(inputComicsValue) {
     payload: promise // Will be resolved by redux-promise
   };
 }
-//Search characters
+//SEARCH_CHARACTERS
 export function searchCharacters(inputCharactersValue) {
   const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&nameStartsWith=${inputCharactersValue}`;
   const promise = fetch(url)
@@ -59,5 +60,25 @@ export function searchCharacters(inputCharactersValue) {
   return {
     type: SEARCH_CHARACTERS,
     payload: promise // Will be resolved by redux-promise
+  };
+}
+
+//ADD_TO_FAVORITES
+export function addToFavorites(data, favoriteType, callback) {
+  const url = `/api/v1/favorite_${favoriteType}`;
+  const body = { id: data.id, image_url: data.thumbnail.path, image_type: data.thumbnail.extension };
+  const request = fetch(url,{
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(r => r.json())
+    .then(() => callback());
+
+  return {
+    type: ADD_TO_FAVORITES,
+    payload: request // Will be resolved by redux-promise
   };
 }

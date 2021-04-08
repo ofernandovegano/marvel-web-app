@@ -6,5 +6,11 @@ Rails.application.routes.draw do
   get '/comics/:id', to: 'pages#home'
   get '/characters', to: 'pages#home'
   get '/characters/:id', to: 'pages#home'
-  get '/favorites', to: 'pages#favorites'
+  get '/user_favorites', to: 'pages#user_favorites'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post '/favorite_comic', to: 'favorites#add_to_favorite_comics'
+    end
+  end
 end
