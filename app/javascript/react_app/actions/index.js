@@ -5,6 +5,7 @@ dotenv.config()
 export const FETCH_COMICS = 'FETCH_COMICS';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const SEARCH_COMICS = 'SEARCH_COMICS';
+export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
 
 
 console.log(process.env)
@@ -39,7 +40,6 @@ export function fetchCharacters() {
 }
 
 //Search comics
-
 export function searchComics(inputComicsValue) {
   const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&titleStartsWith=${inputComicsValue}`;
   const promise = fetch(url)
@@ -47,6 +47,17 @@ export function searchComics(inputComicsValue) {
 
   return {
     type: SEARCH_COMICS,
+    payload: promise // Will be resolved by redux-promise
+  };
+}
+//Search characters
+export function searchCharacters(inputCharactersValue) {
+  const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&nameStartsWith=${inputCharactersValue}`;
+  const promise = fetch(url)
+    .then(r => r.json());
+
+  return {
+    type: SEARCH_CHARACTERS,
     payload: promise // Will be resolved by redux-promise
   };
 }
