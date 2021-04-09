@@ -62,9 +62,10 @@
 // show page style
 
 .header-show {
-  font-size: 3rem;
+  font-size: 1.4rem;
   text-align: center;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 .show-container {
   height: 100vh;
@@ -72,9 +73,6 @@
 .img-show {
   height: 65vh;
   display: flex;
-}
-.character-img-show {
-  align-self: flex-start;
 }
 .show-info {
   display: flex;
@@ -89,4 +87,13 @@
 }
 .info-show-details {
   margin-bottom: 15px;
+}
+.start-img-show {
+  align-self: flex-start;
+  margin-top: 35px;
+}
+
+// Comic show
+comic-img-show {
+
 }

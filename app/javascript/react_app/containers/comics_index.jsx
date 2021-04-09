@@ -27,7 +27,6 @@ class ComicsIndex extends Component {
               
                 <Link to={`/comics/${comic.id}`} key={comic.id}>
                   < div>
-                    {console.log(comic.thumbnail.path.substring(44, 63))}
                     <div className="comic-img-div">
                         <img src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`} className="comic-img" />
                       

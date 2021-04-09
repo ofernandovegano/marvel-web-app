@@ -3,16 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
-import SearchCharacters from './search_characters';
-
 import { addToFavorites } from '../actions';
 
 
 class CharactersShow extends Component {
-  componentWillMount() {
-    this.props.character;
-  }
-
   handleClick = () => {
     this.props.addToFavorites(this.props.character, 'character', () => {
       this.props.history.push('/characters')});
@@ -31,7 +25,7 @@ class CharactersShow extends Component {
           </div>
 
           <div className="col-4 img-show">
-            <img src={`${this.props.character.thumbnail.path}/standard_fantastic.${this.props.character.thumbnail.extension}`} className="character-img character-img-show"/>
+            <img src={`${this.props.character.thumbnail.path}/standard_fantastic.${this.props.character.thumbnail.extension}`} className="character-img start-img-show"/>
           </div>
 
           <div className="col-8 show-info">
@@ -79,7 +73,6 @@ class CharactersShow extends Component {
                   </div>
                   : ""
                 }
-                {console.log(this.props.character.events.items)}
                 {this.props.character.events.items[0] ?
                   <div className="info-show-details">
                     <span><strong>Events: </strong></span>
