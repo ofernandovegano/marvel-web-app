@@ -14,6 +14,7 @@ import ComicsIndex from './containers/comics_index';
 import ComicsShow from './containers/comics_show';
 import CharactersIndex from './containers/characters_index';
 import CharactersShow from './containers/characters_show';
+import UserFavorites from './containers/user_favorites';
 
 
 //Reducers
@@ -56,6 +57,7 @@ ReactDOM.render(
           <Route path="/comics/:id" component={ComicsShow} />
           <Route path="/characters" exact component={CharactersIndex} />
           <Route path="/characters/:id" exact component={CharactersShow} />
+          <Route path="/user_favorites" exact component={UserFavorites} />
 
         </Switch>
       </div>

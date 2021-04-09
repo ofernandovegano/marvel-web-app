@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
+  # React routes
   root to: 'pages#home'
 
   get '/comics', to: 'pages#home'
   get '/comics/:id', to: 'pages#home'
   get '/characters', to: 'pages#home'
   get '/characters/:id', to: 'pages#home'
-  get '/user_favorites', to: 'pages#user_favorites'
-  # resources :favorites, only: :index
+  get '/user_favorites', to: 'pages#home'
 
+  # API from backend to frontend
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       post '/favorite_comic', to: 'favorites#add_to_favorite_comics'

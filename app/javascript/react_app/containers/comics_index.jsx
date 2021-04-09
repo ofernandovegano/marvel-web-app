@@ -20,6 +20,7 @@ class ComicsIndex extends Component {
         </Link>
         < SearchComics />
         <div className="comics">
+          {/* filter images not available before map*/}
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
             .map((comic) => {
               return (
@@ -35,7 +36,7 @@ class ComicsIndex extends Component {
                         {comic.title.length > 30 ? `${comic.title.slice(0, 30)}...` : comic.title }
                     </div>
                   </div>
-                  </Link>
+                </Link>
                   
               </div>
             );
