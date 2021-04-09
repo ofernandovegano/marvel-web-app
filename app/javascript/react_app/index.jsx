@@ -40,8 +40,8 @@ const root = document.getElementById('root')
 // Initial State
 const initialState = {
   comics: [],
-  characters: []
-  favoriteComics: JSON.parse(root.dataset.favorite_comics)
+  characters: [],
+  favoriteComics: JSON.parse(root.dataset.favorite_comics),
   favoriteCharacters: JSON.parse(root.dataset.favorite_characters)
 };
 
