@@ -19,21 +19,31 @@ import CharactersShow from './containers/characters_show';
 //Reducers
 import comicsReducer from './reducers/comics_reducer.js';
 import charactersReducer from './reducers/characters_reducer.js';
+import favoriteCharactersReducer from './reducers/favorite_characters_reducer.js';
+import favoriteComicsReducer from './reducers/favorite_comics_reducer.js';
+
+
+// State and reducers
+const reducers = combineReducers({
+  comics: comicsReducer,
+  characters: charactersReducer,
+  favoriteCharacters: favoriteCharactersReducer,
+  favoriteComics: favoriteComicsReducer
+});
+
+//Middlewares
+const middlewares = applyMiddleware(reduxPromise, logger);
+
+//div where react will works
+const root = document.getElementById('root')
 
 // Initial State
 const initialState = {
   comics: [],
   characters: []
+  favoriteComics: JSON.parse(root.dataset.favorite_comics)
+  favoriteCharacters: JSON.parse(root.dataset.favorite_characters)
 };
-
-// State and reducers
-const reducers = combineReducers({
-  comics: comicsReducer,
-  characters: charactersReducer
-});
-
-//Middlewares
-const middlewares = applyMiddleware(reduxPromise, logger);
 
 // render an instance of the component in the DOM
 ReactDOM.render(
@@ -51,5 +61,5 @@ ReactDOM.render(
       </div>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  root
 );

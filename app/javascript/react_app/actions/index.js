@@ -7,6 +7,8 @@ export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const SEARCH_COMICS = 'SEARCH_COMICS';
 export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
+export const FETCH_FAVORITE_COMICS = 'FETCH_FAVORITE_COMICS';
+export const FETCH_FAVORITE_CHARACTERS = 'FETCH_FAVORITE_CHARACTERS';
 
 
 console.log(process.env)
@@ -81,4 +83,27 @@ export function addToFavorites(data, favoriteType, callback) {
     type: ADD_TO_FAVORITES,
     payload: request // Will be resolved by redux-promise
   };
+}
+
+
+//FETCH_FAVORITE_COMICS
+export function fetchFavoriteComics() {
+  const promise = fetch('/api/v1/favorite_comics')
+    .then(r => r.json());
+  
+  return {
+    type: FETCH_FAVORITE_COMICS,
+    payload: promise // Will be resolved by redux-promise
+  }
+}
+
+//FETCH_FAVORITE_CHARACTERS
+export function fetchFavoriteCharacters() {
+  const promise = fetch('/api/v1/favorite_characters')
+    .then(r => r.json());
+  
+  return {
+    type: FETCH_FAVORITE_CHARACTERS,
+    payload: promise // Will be resolved by redux-promise
+  }
 }
