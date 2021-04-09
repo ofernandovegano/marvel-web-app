@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/comics/:id', to: 'pages#home'
   get '/characters', to: 'pages#home'
   get '/characters/:id', to: 'pages#home'
-  get '/user_favorites', to: 'pages#user_favorites'
+  get '/favorites', to: 'pages#user_favorites'
+  # resources :favorites, only: :index
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
