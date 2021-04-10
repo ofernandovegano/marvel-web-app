@@ -17,12 +17,10 @@ class CharactersIndex extends Component {
         <div className="favorite-comics">
           {this.props.favoriteComics.map((comic) => {
               return (
-                < div key={comic.comic_id} className="favorite" >
+                < div key={comic.comic_id} className="favorite-comic-img" >
                   <Link to={`/comics/${comic.comic_id}`} key={comic.comic_id}>
                     < div>
-                      <div>
-                        <img src={`${comic.image_url}/portrait_xlarge.${comic.image_type}`} className="comic-img" />
-                      </div>
+                      <img src={`${comic.image_url}/portrait_xlarge.${comic.image_type}`} className="comic-img" />
                     </div>
                   </Link>
               </div>
@@ -33,12 +31,10 @@ class CharactersIndex extends Component {
         <div className="favorite-characters">
         {this.props.favoriteCharacters.map((character) => {
             return (
-              < div key = { character.character_id } className = "favorite" >
+              < div key = { character.character_id } className = "favorite-character-img" >
                 <Link to={`/characters/${character.character_id}`} key={character.character_id}>
                   < div>
-                    <div >
-                        <img src={`${character.image_url}/standard_large.${character.image_type}`} className="character-img" />
-                    </div>
+                    <img src={`${character.image_url}/standard_large.${character.image_type}`} className="character-img" />
                   </div>
                 </Link> 
               </div>
