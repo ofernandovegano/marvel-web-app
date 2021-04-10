@@ -2,9 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-  end
-
-  def user_favorites
-    @favorite_characters = User.find(current_user.id)
+    @favorite_comics = FavoriteComic.where(user_id: current_user)
+    @favorite_characters = FavoriteCharacter.where(user_id: current_user)
   end
 end

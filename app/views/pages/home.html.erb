@@ -1,6 +1,6 @@
 <%if current_user.present? %>
 
-  <div id="root"> </div>
+  <div id="root" data-favorite_characters="<%= @favorite_characters.to_json %>" data-favorite_comics="<%= @favorite_comics.to_json %>"> </div>
 
 <%else%>
 <div id="background-home">

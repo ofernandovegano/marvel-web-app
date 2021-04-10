@@ -14,26 +14,37 @@ import ComicsIndex from './containers/comics_index';
 import ComicsShow from './containers/comics_show';
 import CharactersIndex from './containers/characters_index';
 import CharactersShow from './containers/characters_show';
+import UserFavorites from './containers/user_favorites';
 
 
 //Reducers
 import comicsReducer from './reducers/comics_reducer.js';
 import charactersReducer from './reducers/characters_reducer.js';
+import favoriteCharactersReducer from './reducers/favorite_characters_reducer.js';
+import favoriteComicsReducer from './reducers/favorite_comics_reducer.js';
 
-// Initial State
-const initialState = {
-  comics: [],
-  characters: []
-};
 
 // State and reducers
 const reducers = combineReducers({
   comics: comicsReducer,
-  characters: charactersReducer
+  characters: charactersReducer,
+  favoriteCharacters: favoriteCharactersReducer,
+  favoriteComics: favoriteComicsReducer
 });
 
 //Middlewares
 const middlewares = applyMiddleware(reduxPromise, logger);
+
+//div where react will works
+const root = document.getElementById('root')
+
+// Initial State
+const initialState = {
+  comics: [],
+  characters: [],
+  favoriteComics: JSON.parse(root.dataset.favorite_comics),
+  favoriteCharacters: JSON.parse(root.dataset.favorite_characters)
+};
 
 // render an instance of the component in the DOM
 ReactDOM.render(
@@ -46,10 +57,11 @@ ReactDOM.render(
           <Route path="/comics/:id" component={ComicsShow} />
           <Route path="/characters" exact component={CharactersIndex} />
           <Route path="/characters/:id" exact component={CharactersShow} />
+          <Route path="/user_favorites" exact component={UserFavorites} />
 
         </Switch>
       </div>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  root
 );

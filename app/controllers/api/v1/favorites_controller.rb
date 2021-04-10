@@ -15,4 +15,14 @@ class Api::V1::FavoritesController < ApplicationController
     render json: favorite_character # see favorite_character.as_json method
   end
 
+  def favorite_comics
+    favorite_comics = FavoriteComic.where(user_id: current_user)
+    render json: favorite_comics
+  end
+
+  def favorite_characters
+    favorite_characters = FavoriteCharacter.where(user_id: current_user)
+    render json: favorite_characters
+  end
+
 end

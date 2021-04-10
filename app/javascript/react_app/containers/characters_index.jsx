@@ -38,7 +38,7 @@ class CharactersIndex extends Component {
                       {character.name.length > 30 ? `${character.name.slice(0, 30)}...` : character.name }
                   </div>
                 </div>
-                </Link>
+              </Link>
                 
               </div>
             );
@@ -51,8 +51,7 @@ class CharactersIndex extends Component {
 
 function mapStateToProps(state) {
   return {
-    characters: state.characters,
-
+    characters: state.characters
   };
 }
 
