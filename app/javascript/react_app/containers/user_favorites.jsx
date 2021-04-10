@@ -1,62 +1,51 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchFavoriteComics, fetchFavoriteCharacters } from '../actions/index';
+import { fetchFavoriteComics, fetchFavoriteCharacters, fetchCharacters, fetchComics } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 class CharactersIndex extends Component {
   componentWillMount() {
-
+    this.props.fetchCharacters();
+    this.props.fetchComics();
   }
 
   render() {
     return (
       <div className="favorites-container">
- 
+        <h2 className='favorite-comics-header'>Your favorite comics</h2>
         <div className="favorite-comics">
-          {this.props.favoriteComics
-            .map((comic) => {
-            return (
-              < div key = { comic.id } className = "comic" >
-            
-              <Link to={`/comics/${comic.id}`} key={comic.id}>
-                < div>
-                  <div className="comic-img-div">
-                      <img src={`${comic.thumbnail.path}/portrait_medium.${comic.thumbnail.extension}`} className="comic-img" />
-                    
-                  </div>
-                  <div className="comic-name">
-                      {comic.name.length > 30 ? `${character.name.slice(0, 30)}...` : character.name }
-                  </div>
-                </div>
-              </Link>
-                
+          {this.props.favoriteComics.map((comic) => {
+              return (
+                < div key={comic.comic_id} className="favorite" >
+                  <Link to={`/comics/${comic.comic_id}`} key={comic.comic_id}>
+                    < div>
+                      <div>
+                        <img src={`${comic.image_url}/portrait_xlarge.${comic.image_type}`} className="comic-img" />
+                      </div>
+                    </div>
+                  </Link>
               </div>
             );
           })}
         </div>
+        <h2 className='favorite-character-header'>Your favorite characters</h2>
         <div className="favorite-characters">
-          {this.props.favoriteCharacters
-            .map((character) => {
+        {this.props.favoriteCharacters.map((character) => {
             return (
-              < div key = { character.id } className = "character" >
-            
-              <Link to={`/characters/${character.id}`} key={character.id}>
-                < div>
-                  <div className="character-img-div">
-                      <img src={`${character.thumbnail.path}/standard_medium.${character.thumbnail.extension}`} className="character-img" />
-                    
+              < div key = { character.character_id } className = "favorite" >
+                <Link to={`/characters/${character.character_id}`} key={character.character_id}>
+                  < div>
+                    <div >
+                        <img src={`${character.image_url}/standard_large.${character.image_type}`} className="character-img" />
+                    </div>
                   </div>
-                  <div className="character-name">
-                      {character.name.length > 30 ? `${character.name.slice(0, 30)}...` : character.name }
-                  </div>
-                </div>
-              </Link>
-                
+                </Link> 
               </div>
             );
           })}
         </div>
+
       </div>
     );
   };
@@ -64,14 +53,15 @@ class CharactersIndex extends Component {
 
 function mapStateToProps(state) {
   return {
+    comics: state.comics,
+    characters: state.characters,
     favoriteComics: state.favoriteComics,
     favoriteCharacters: state.favoriteCharacters
-
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchFavoriteComics, fetchFavoriteCharacters }, dispatch);
+  return bindActionCreators({ fetchCharacters, fetchComics }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharactersIndex);

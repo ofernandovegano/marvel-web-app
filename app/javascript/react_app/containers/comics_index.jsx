@@ -49,8 +49,7 @@ class ComicsIndex extends Component {
 
 function mapStateToProps(state) {
   return {
-    comics: state.comics,
-
+    comics: state.comics
   };
 }
 

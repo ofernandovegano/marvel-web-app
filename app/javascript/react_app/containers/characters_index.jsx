@@ -51,8 +51,7 @@ class CharactersIndex extends Component {
 
 function mapStateToProps(state) {
   return {
-    characters: state.characters,
-
+    characters: state.characters
   };
 }
 
