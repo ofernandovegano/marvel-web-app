@@ -13,7 +13,8 @@ export const FETCH_FAVORITE_CHARACTERS = 'FETCH_FAVORITE_CHARACTERS';
 
 console.log(process.env)
 const BASE_URL = 'https://gateway.marvel.com/v1/public/';
-const { REACT_APP_MARVEL_PRIVATE_KEY, REACT_APP_MARVEL_PUBLIC_KEY} = process.env
+const REACT_APP_MARVEL_PRIVATE_KEY = process.env.REACT_APP_MARVEL_PRIVATE_KEY;
+const REACT_APP_MARVEL_PUBLIC_KEY = process.env.REACT_APP_MARVEL_PUBLIC_KEY;
 let timeStamp = Math.floor(Date.now() / 1000)
 let md5Key = md5(`${timeStamp}${REACT_APP_MARVEL_PRIVATE_KEY}${REACT_APP_MARVEL_PUBLIC_KEY}`)
 
