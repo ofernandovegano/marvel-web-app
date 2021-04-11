@@ -15,10 +15,10 @@ class ComicsIndex extends Component {
   render() {
     return (
       <div className="comics-container">
-        <Link to="/">
-          <p>Back to Marvel Index</p>
-        </Link>
         < SearchComics />
+        <Link to="/">
+            <p className="back-to-last-page">&#60;&#60;</p>
+        </Link>
         <div className="comics">
           {/* filter images not available before map*/}
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
