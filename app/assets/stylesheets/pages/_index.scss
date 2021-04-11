@@ -1,7 +1,9 @@
 // Import page-specific CSS files here.
 body {
-  background-color: $marvel-black;
-  color: $marvel-white;
+  background-color: $marvel-white;
+  color: $marvel-black;
+  font-family: $body-font;
+  font-weight: normal;
 }
 
 @import "home";

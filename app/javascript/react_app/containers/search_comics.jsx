@@ -31,14 +31,14 @@ class SearchComics extends Component {
           <input
             ref={input => this.inputBox = input}
             type="text"
-            className="form-control"
+            className="form-control search-index"
             autoComplete="off"
             value={this.state.value}
             onChange={this.handleChange}
           />
         </div>
         <div className="col-2">
-          <button type="submit" className='btn btn-light btn-search'>Serch Comics</button>
+          <button type="submit" className='btn btn-light btn-search'>Search Comics</button>
         </div>
       </div>
       </form>
