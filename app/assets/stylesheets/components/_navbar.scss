@@ -1,12 +1,19 @@
-.navbar-lewagon {
+.navbar-marvel {
   justify-content: space-between;
-  background: #0e1012;
+  background: $marvel-black;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-marvel .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 60px;
+.navbar-marvel .navbar-brand img {
+  width: 100px;
+}
+.nav-item {
+  color: $marvel-white;
+  padding: 0 3rem;
+}
+.nav-center {
+  font-size: 1.5rem;
 }

@@ -16,7 +16,7 @@ class CharactersShow extends Component {
     return (
       <div className="character-show-container show-container">
         <Link to="/characters">
-          <p>Back to Characters</p>
+            <p className="back-to-last-page">Back to Characters</p>
         </Link>
         <div className="row">
           

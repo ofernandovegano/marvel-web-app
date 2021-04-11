@@ -38,7 +38,7 @@ class SearchCharacters extends Component {
           />
         </div>
         <div className="col-2">
-          <button type="submit" className='btn btn-light btn-search'>Serch Characters</button>
+          <button type="submit" className='btn btn-light btn-search'>Search Characters</button>
         </div>
       </div>
       </form>
