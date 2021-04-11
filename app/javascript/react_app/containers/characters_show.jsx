@@ -15,9 +15,7 @@ class CharactersShow extends Component {
   render() {
     return (
       <div className="character-show-container show-container">
-        <Link to="/characters">
-            <p className="back-to-last-page">Back to Characters</p>
-        </Link>
+
         <div className="row">
           
           <div className="col-12">
@@ -42,13 +40,13 @@ class CharactersShow extends Component {
               <div className="info-show">
                 { this.props.character.description ? 
                   <div className="info-show-details">
-                    <strong>Description: </strong><span>{this.props.character.description}</span>
+                    <p><strong>Description: </strong></p><span>{this.props.character.description}</span>
                   </div>
                   : ""
                 }
                 {this.props.character.comics.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Comics: </strong></span>
+                    <p><strong>Comics: </strong></p>
                     {this.props.character.comics.items.map((comic, index) => {
                       return (<span key={comic.name} >{(index ? ', ' : "") + comic.name}</span>)
                     })}<span>.</span>
@@ -57,7 +55,7 @@ class CharactersShow extends Component {
                 }
                 {this.props.character.stories.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Stories: </strong></span>
+                    <p><strong>Stories: </strong></p>
                     {this.props.character.stories.items.map((story, index) => {
                       return (<span key={story.name} >{(index ? ', ' : "") + story.name}</span>)
                     })}<span>.</span>
@@ -66,7 +64,7 @@ class CharactersShow extends Component {
                 }
                 {this.props.character.series.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Series: </strong></span>
+                    <p><strong>Series: </strong></p>
                     {this.props.character.series.items.map((serie, index) => {
                       return (<span key={serie.name} >{(index ? ', ' : "") + serie.name}</span>)
                     })}<span>.</span>
@@ -75,7 +73,7 @@ class CharactersShow extends Component {
                 }
                 {this.props.character.events.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Events: </strong></span>
+                    <p><strong>Events: </strong></p>
                     {this.props.character.events.items.map((event, index) => {
                       return (<span key={event.name} >{(index ? ', ' : "") + event.name}</span>)
                     })}<span>.</span>

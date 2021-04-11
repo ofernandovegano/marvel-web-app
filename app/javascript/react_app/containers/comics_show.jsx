@@ -16,9 +16,7 @@ class ComicsShow extends Component {
   render() {
     return (
       <div className="comic-show-container show-container">
-        <Link to="/comics">
-          <p>Back to comics</p>
-        </Link>
+
         <div className="row">
           
           <div className="col-12">
@@ -43,13 +41,13 @@ class ComicsShow extends Component {
               <div className="info-show">
                 { this.props.comic.description ? 
                   <div className="info-show-details">
-                    <strong>Description: </strong><span>{this.props.comic.description}</span>
+                    <p><strong>Description: </strong></p><span>{this.props.comic.description}</span>
                   </div>
                   : ""
                 }
                 {this.props.comic.characters.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>characters: </strong></span>
+                    <p><strong>characters: </strong></p>
                     {this.props.comic.characters.items.map((character, index) => {
                       return (<span key={character.name} >{(index ? ', ' : "") + character.name}</span>)
                     })}<span>.</span>
@@ -58,7 +56,7 @@ class ComicsShow extends Component {
                 }
                 {this.props.comic.stories.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Stories: </strong></span>
+                    <p><strong>Stories: </strong></p>
                     {this.props.comic.stories.items.map((story, index) => {
                       return (<span key={story.name} >{(index ? ', ' : "") + story.name}</span>)
                     })}<span>.</span>
@@ -67,14 +65,14 @@ class ComicsShow extends Component {
                 }
                 {this.props.comic.series.name ?
                   <div className="info-show-details">
-                    <span><strong>Series: </strong></span>
+                    <p><strong>Series: </strong></p>
                     {this.props.comic.series.name}
                   </div>
                   : ""
                 }
                 {this.props.comic.events.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Events: </strong></span>
+                    <p><strong>Events: </strong></p>
                     {this.props.comic.events.items.map((event, index) => {
                       return (<span key={event.name} >{(index ? ', ' : "") + event.name}</span>)
                     })}<span>.</span>
@@ -83,7 +81,7 @@ class ComicsShow extends Component {
                 }
                 {this.props.comic.creators.items[0] ?
                   <div className="info-show-details">
-                    <span><strong>Events: </strong></span>
+                    <p><strong>Events: </strong></p>
                     {this.props.comic.creators.items.map((creator, index) => {
                       return (<span key={creator.name} >{(index ? ', ' : "") + creator.name}</span>)
                     })}<span>.</span>

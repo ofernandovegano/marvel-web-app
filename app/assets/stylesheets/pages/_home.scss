@@ -88,10 +88,12 @@
 // show page style
 
 .header-show {
-  font-size: 1.4rem;
+  font-size: 2rem;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: rgb(165, 18, 18);
 }
 .show-container {
   min-height: 100vh;
@@ -109,7 +111,8 @@
   margin: 35px 0;
 }
 .about-header {
-  font-size: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
 }
 .info-show-details {
   margin-bottom: 15px;
