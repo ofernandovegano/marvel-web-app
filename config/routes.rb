@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       post '/favorite_character', to: 'favorites#add_to_favorite_characters'
       get '/favorites', to: 'favorites#favorite_comics'
       get '/favorites', to: 'favorites#favorite_characters'
+      delete 'favorite_comic/:id', to: 'favorites#destroy_favorite_comic'
+      delete 'favorite_character/:id', to: 'favorites#destroy_favorite_character'
     end
   end
 end

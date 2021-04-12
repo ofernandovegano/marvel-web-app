@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchFavoriteComics, fetchFavoriteCharacters, fetchCharacters, fetchComics } from '../actions/index';
+import { fetchFavoriteComics, fetchFavoriteCharacters, fetchCharacters, fetchComics, destroyFavoriteComic, destroyFavoriteCharacter } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 class CharactersIndex extends Component {
@@ -9,8 +9,16 @@ class CharactersIndex extends Component {
     this.props.fetchCharacters();
     this.props.fetchComics();
   }
+  handleDestroyComicClick = (comic) => {
+    this.props.destroyFavoriteComic(comic, () => {
+      this.props.history.push('/user_favorites')});
+  }
+  handleDestroyCharacterClick = (character) => {
+    this.props.destroyFavoriteCharacter(character, () => {
+      this.props.history.push('/user_favorites')});
+  }
 
-  render() {
+  render() { 
     return (
       <div className="favorites-container">
         <h2 className='favorite-comics-header'>Your favorite comics</h2>
@@ -23,10 +31,12 @@ class CharactersIndex extends Component {
                       <img src={`${comic.image_url}/portrait_xlarge.${comic.image_type}`} className="comic-img" />
                     </div>
                   </Link>
-              </div>
-            );
+                  <button onClick={() => this.handleDestroyComicClick(comic)} className="btn btn-danger text-center rounded delete-btn-favorite">Delete</button>
+                </div>
+             );
           })}
         </div>
+
         <h2 className='favorite-character-header'>Your favorite characters</h2>
         <div className="favorite-characters">
         {this.props.favoriteCharacters.map((character) => {
@@ -37,6 +47,7 @@ class CharactersIndex extends Component {
                     <img src={`${character.image_url}/standard_large.${character.image_type}`} className="character-img" />
                   </div>
                 </Link> 
+                <button onClick={() => this.handleDestroyCharacterClick(character)} className="btn btn-danger text-center rounded delete-btn-favorite">Delete</button>
               </div>
             );
           })}
@@ -57,7 +68,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCharacters, fetchComics }, dispatch);
+  return bindActionCreators({ fetchCharacters, fetchComics, destroyFavoriteComic, destroyFavoriteCharacter }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharactersIndex);
