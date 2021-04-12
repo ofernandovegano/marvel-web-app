@@ -1,10 +1,12 @@
 .navbar-marvel {
   justify-content: space-between;
   background: $marvel-black;
+  margin: 0 auto;
 }
 
 .navbar-marvel .navbar-collapse {
   flex-grow: 0;
+  width: 100%;
 }
 
 .navbar-marvel .navbar-brand img {
@@ -13,22 +15,31 @@
 .nav-item {
   color: $marvel-white;
 }
-.nav-item-padding {
-  padding: 0 4rem;
-}
-.nav-side-avatar-links {
-  padding: 0 0.5rem;
-  display: flex;
-  align-items: center;
-}
-.nav-center {
-  font-size: 1.5rem;
-}
-.fa-cog {
-  color: rgb(139, 138, 138);
-  font-size: 1.5rem;
-  padding: 1rem;
-}
 .navbar {
   padding: 0.5rem 2.5rem;
 }
+.nav-center {
+  font-size: 1.6rem;
+}
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: row;
+}
+
+ @media screen and (max-width: 1200px) {
+  .nav-center {
+    font-size: 1.3rem;
+  }
+ }
+ @media screen and (max-width: 992px) {
+    .nav-center{
+      font-size: 1.1rem;
+    }
+ }
+ @media screen and (max-width: 768px) {
+  .navbar-brand {
+    display: none;
+  }
+ }

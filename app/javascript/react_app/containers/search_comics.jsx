@@ -38,7 +38,8 @@ class SearchComics extends Component {
           />
         </div>
         <div className="col-2">
-          <button type="submit" className='btn btn-light btn-search'>Search Comics</button>
+          <button type="submit" className='btn btn-light btn-search btn-search-big'>Search Comics</button>
+          <button type="submit" className='btn btn-light btn-search btn-search-small'>Search</button>
         </div>
       </div>
       </form>
