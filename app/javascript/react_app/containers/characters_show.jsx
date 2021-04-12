@@ -21,7 +21,7 @@ class CharactersShow extends Component {
           <div className="col-12">
             <h1 className="header-show">{ this.props.character.name }</h1>
           </div>
-          <div>
+          <div className="col-12">
             <Link onClick={() => window.location.href = `/characters/page/${this.props.lastPageIndex}`}>Back to index</Link>
           </div>
           <div className="col-12 col-lg-4 img-show">
