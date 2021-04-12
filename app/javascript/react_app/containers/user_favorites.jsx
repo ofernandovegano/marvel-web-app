@@ -23,6 +23,7 @@ class CharactersIndex extends Component {
       <div className="favorites-container">
         <h2 className='favorite-comics-header'>Your favorite comics</h2>
         <div className="favorite-comics">
+          { this.props.favoriteComics[0] ? "" : <h2 className='you-havent-add-to-favorites'> You haven't added any comic to favorites  </h2> }
           {this.props.favoriteComics.map((comic) => {
               return (
                 < div key={comic.comic_id} className="favorite-comic-img" >
@@ -39,6 +40,7 @@ class CharactersIndex extends Component {
 
         <h2 className='favorite-character-header'>Your favorite characters</h2>
         <div className="favorite-characters">
+        { this.props.favoriteCharacters[0] ? "" : <h2 className='you-havent-add-to-favorites'> You haven't added any character to favorites  </h2> }
         {this.props.favoriteCharacters.map((character) => {
             return (
               < div key = { character.character_id } className = "favorite-character-img" >
