@@ -21,7 +21,9 @@ class CharactersShow extends Component {
           <div className="col-12">
             <h1 className="header-show">{ this.props.character.name }</h1>
           </div>
-
+          <div>
+            <Link onClick={() => window.location.href = `/characters/page/${this.props.lastPageIndex}`}>Back to index</Link>
+          </div>
           <div className="col-12 col-lg-4 img-show">
             <img src={`${this.props.character.thumbnail.path}/standard_fantastic.${this.props.character.thumbnail.extension}`} className="character-img start-img-show"/>
           </div>
@@ -94,6 +96,7 @@ function mapStateToProps(state, ownProps) {
   const id = parseInt(ownProps.match.params.id);
   return {
     character: state.characters.find((character) => character.id === id),
+    lastPageIndex: state.lastPageIndex
   };
 }
 
