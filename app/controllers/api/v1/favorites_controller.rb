@@ -20,6 +20,11 @@ class Api::V1::FavoritesController < ApplicationController
     comic.destroy
   end
 
+  def destroy_favorite_character()
+    character = FavoriteCharacter.find(params[:id])
+    character.destroy
+  end
+
   def favorite_comics
     favorite_comics = FavoriteComic.where(user_id: current_user)
     render json: favorite_comics

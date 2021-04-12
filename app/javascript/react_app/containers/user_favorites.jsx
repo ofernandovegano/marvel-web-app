@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchFavoriteComics, fetchFavoriteCharacters, fetchCharacters, fetchComics, destroyFavoriteComic } from '../actions/index';
+import { fetchFavoriteComics, fetchFavoriteCharacters, fetchCharacters, fetchComics, destroyFavoriteComic, destroyFavoriteCharacter } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 class CharactersIndex extends Component {
@@ -11,6 +11,10 @@ class CharactersIndex extends Component {
   }
   handleDestroyComicClick = (comic) => {
     this.props.destroyFavoriteComic(comic, () => {
+      this.props.history.push('/user_favorites')});
+  }
+  handleDestroyCharacterClick = (character) => {
+    this.props.destroyFavoriteCharacter(character, () => {
       this.props.history.push('/user_favorites')});
   }
 
@@ -43,6 +47,7 @@ class CharactersIndex extends Component {
                     <img src={`${character.image_url}/standard_large.${character.image_type}`} className="character-img" />
                   </div>
                 </Link> 
+                <button onClick={() => this.handleDestroyCharacterClick(character)} className="btn btn-danger text-center rounded delete-btn-favorite">Delete</button>
               </div>
             );
           })}
@@ -63,7 +68,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCharacters, fetchComics, destroyFavoriteComic }, dispatch);
+  return bindActionCreators({ fetchCharacters, fetchComics, destroyFavoriteComic, destroyFavoriteCharacter }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharactersIndex);

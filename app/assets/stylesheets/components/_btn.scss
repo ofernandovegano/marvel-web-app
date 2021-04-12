@@ -27,13 +27,14 @@
   }
  }
 .delete-btn-favorite {
-  font-size: 1rem;
-  padding: 3px;
+  font-size: 0.7rem;
+  margin: 8px auto;
   opacity: 0.2;
+  width: 40%;
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
-}
+  }
 
 
 
