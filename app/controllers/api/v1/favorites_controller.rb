@@ -15,6 +15,11 @@ class Api::V1::FavoritesController < ApplicationController
     render json: favorite_character # see favorite_character.as_json method
   end
 
+  def destroy_favorite_comic()
+    comic = FavoriteComic.find(params[:id])
+    comic.destroy
+  end
+
   def favorite_comics
     favorite_comics = FavoriteComic.where(user_id: current_user)
     render json: favorite_comics

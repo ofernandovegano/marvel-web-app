@@ -168,6 +168,8 @@
 }
 .favorite-comic-img {
   padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 .favorite-character-img {
   padding: 15px;

@@ -9,6 +9,7 @@ export const FETCH_CHARACTERS_NEXT_PAGE = 'FETCH_CHARACTERS_NEXT_PAGE';
 export const SEARCH_COMICS = 'SEARCH_COMICS';
 export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
+export const DESTROY_FAVORITE_COMIC = 'DESTROY_FAVORITE_COMIC';
 export const FETCH_FAVORITE_COMICS = 'FETCH_FAVORITE_COMICS';
 export const FETCH_FAVORITE_CHARACTERS = 'FETCH_FAVORITE_CHARACTERS';
 
@@ -134,4 +135,16 @@ export function fetchFavoriteCharacters() {
     type: FETCH_FAVORITE_CHARACTERS,
     payload: promise // Will be resolved by redux-promise
   }
+}
+
+//DESTROY_FAVORITE_COMIC
+export function destroyFavoriteComic(comic, callback) {
+  const url = `/api/v1/favorite_comic/${comic.id}`;
+  fetch(url,{ method: 'DELETE' }).then(r => r.json())
+    .then(() => callback());
+
+  return {
+    type: DESTROY_FAVORITE_COMIC,
+    payload: comic // Will be resolved by redux-promise
+  };
 }

@@ -26,6 +26,14 @@
     width: 5.5rem;
   }
  }
+.delete-btn-favorite {
+  font-size: 1rem;
+  padding: 3px;
+  opacity: 0.2;
+  &:hover {
+    opacity: 1;
+  }
+}
 
 
 
