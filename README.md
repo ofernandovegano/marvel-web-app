@@ -34,5 +34,3 @@ Enjoy it!
 Feel free to contact me.
 
 ✉️ gomesrodriguesfernando@gmail.com
-
-![MarioShootAMailGIF](https://user-images.githubusercontent.com/72116388/114293446-6c5b4b80-9a6c-11eb-86ed-723d3efbf436.gif)
