@@ -8,7 +8,7 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: 115px;
+  padding-bottom: 85px;
 }
 .background-home-button {
   padding: 0.5rem 1.5rem;
@@ -26,3 +26,28 @@
 #defaultCanvas0 {
   opacity: 0.5;
 }
+@media screen and (max-width: 1200px) {
+  .background-home-paragraph {
+    font-size: 1.9rem;
+  }
+  .call-to-login {
+    padding-bottom: 80px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .background-home-paragraph {
+    font-size: 1.8rem;
+  }
+  .call-to-login {
+    padding-bottom: 70px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .background-home-paragraph {
+      font-size: 1.2rem;
+  }
+  .call-to-login {
+    padding-bottom: 50px;
+  }
+}
+
