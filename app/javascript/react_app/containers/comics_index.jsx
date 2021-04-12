@@ -9,16 +9,19 @@ import { fetchComics } from '../actions';
 
 class ComicsIndex extends Component {
   componentWillMount() {
-    this.props.fetchComics();
+    const page = this.props.match.params.page
+    //offset fetch from page 1 is 0, so 1 * 100 - 100 is zero
+    this.props.fetchComics(page*100-100);
+
   }
 
   render() {
     return (
       <div className="comics-container">
         < SearchComics />
-        <Link to="/">
-            <p className="back-to-last-page">&#60;&#60;</p>
-        </Link>
+
+        {/* <p onClick={this.handleClick} className="back-to-last-page">&#62;&#62;</p> */}
+    
         <div className="comics">
           {/* filter images not available before map*/}
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")

@@ -53,7 +53,7 @@ ReactDOM.render(
       <div className="view-container">
         <Switch>
           <Route path="/" exact component={MarvelIndex} />
-          <Route path="/comics" exact component={ComicsIndex} />
+          <Route path="/comics/page/:page" exact component={ComicsIndex} />
           <Route path="/comics/:id" component={ComicsShow} />
           <Route path="/characters" exact component={CharactersIndex} />
           <Route path="/characters/:id" exact component={CharactersShow} />
