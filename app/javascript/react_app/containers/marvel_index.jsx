@@ -23,7 +23,7 @@ class MarvelIndex extends Component {
           </Link>
         </div>
         <div className="marvel-characters">
-          <Link to="/characters">
+          <Link to="/characters/page/1">
             <div className="card-category card-characters">
               CHARACTERS
             </div>

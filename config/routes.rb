@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/comics/page/:page', to: 'pages#home'
   get '/comics/:id', to: 'pages#home'
-  get '/characters', to: 'pages#home'
+  get '/characters/page/:page', to: 'pages#home'
   get '/characters/:id', to: 'pages#home'
   get '/user_favorites', to: 'pages#home'
 
