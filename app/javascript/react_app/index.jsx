@@ -19,7 +19,9 @@ import UserFavorites from './containers/user_favorites';
 
 //Reducers
 import comicsReducer from './reducers/comics_reducer.js';
+import comicsNextPageReducer from './reducers/comics_next_page_reducer.js';
 import charactersReducer from './reducers/characters_reducer.js';
+import charactersNextPageReducer from './reducers/characters_next_page_reducer.js';
 import favoriteCharactersReducer from './reducers/favorite_characters_reducer.js';
 import favoriteComicsReducer from './reducers/favorite_comics_reducer.js';
 
@@ -29,7 +31,9 @@ const reducers = combineReducers({
   comics: comicsReducer,
   characters: charactersReducer,
   favoriteCharacters: favoriteCharactersReducer,
-  favoriteComics: favoriteComicsReducer
+  favoriteComics: favoriteComicsReducer,
+  comicsNextPage: comicsNextPageReducer,
+  charactersNextPage: charactersNextPageReducer
 });
 
 //Middlewares
@@ -53,9 +57,9 @@ ReactDOM.render(
       <div className="view-container">
         <Switch>
           <Route path="/" exact component={MarvelIndex} />
-          <Route path="/comics" exact component={ComicsIndex} />
+          <Route path="/comics/page/:page" exact component={ComicsIndex} />
           <Route path="/comics/:id" component={ComicsShow} />
-          <Route path="/characters" exact component={CharactersIndex} />
+          <Route path="/characters/page/:page" exact component={CharactersIndex} />
           <Route path="/characters/:id" exact component={CharactersShow} />
           <Route path="/user_favorites" exact component={UserFavorites} />
 

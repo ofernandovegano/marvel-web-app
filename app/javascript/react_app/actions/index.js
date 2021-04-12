@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 dotenv.config()
 
 export const FETCH_COMICS = 'FETCH_COMICS';
+export const FETCH_COMICS_NEXT_PAGE = 'FETCH_NEXT-COMICS-PAGE';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
+export const FETCH_CHARACTERS_NEXT_PAGE = 'FETCH_CHARACTERS_NEXT_PAGE';
 export const SEARCH_COMICS = 'SEARCH_COMICS';
 export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
 export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
@@ -19,8 +21,9 @@ let timeStamp = Math.floor(Date.now() / 1000)
 let md5Key = md5(`${timeStamp}${REACT_APP_MARVEL_PRIVATE_KEY}${REACT_APP_MARVEL_PUBLIC_KEY}`)
 
 // FETCH_COMICS - Comics fetch API
-export function fetchComics() {
-  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100`;
+export function fetchComics(page = 1) {
+   //offset fetch from page 1 is 0, so 1 * 100 - 100 is zero
+  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${(page-1)*100}`;
   const promise = fetch(url)
     .then(r => r.json());
 
@@ -30,15 +33,39 @@ export function fetchComics() {
   };
 }
 
+// FETCH_COMICS_NEXT_PAGE - Comics fetch API
+export function fetchComicsNextPage(page) {
+  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${page*100}`;
+  const promise = fetch(url)
+    .then(r => r.json());
+
+  return {
+    type: FETCH_COMICS_NEXT_PAGE,
+    payload: promise // Will be resolved by redux-promise
+  };
+}
+
 
 //FETCH_CHARACTERS - Caracters fatch API
-export function fetchCharacters() {
-  const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100`;
+export function fetchCharacters(page = 1) {
+  const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${(page-1)*100}`;
   const promise = fetch(url)
     .then(r => r.json());
 
   return {
     type: FETCH_CHARACTERS,
+    payload: promise // Will be resolved by redux-promise
+  };
+}
+
+// FETCH_CHARACTERS_NEXT_PAGE - Characters fetch API
+export function fetchCharactersNextPage(page) {
+  const url = `${BASE_URL}characters?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${page*100}`;
+  const promise = fetch(url)
+    .then(r => r.json());
+
+  return {
+    type: FETCH_CHARACTERS_NEXT_PAGE,
     payload: promise // Will be resolved by redux-promise
   };
 }

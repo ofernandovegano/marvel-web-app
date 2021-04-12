@@ -6,20 +6,39 @@ import { Link } from 'react-router-dom';
 import SearchCharacters from './search_characters';
 
 
-import { fetchCharacters } from '../actions';
+import { fetchCharacters, fetchCharactersNextPage } from '../actions';
 
 class CharactersIndex extends Component {
   componentWillMount() {
-    this.props.fetchCharacters();
+    const page = this.props.match.params.page
+    this.props.fetchCharacters(page);
+    this.props.fetchCharactersNextPage(page);
   }
 
   render() {
     return (
       <div className="characters-container">
         < SearchCharacters />
-        <Link to="/">
-            <p className="back-to-last-page">&#60;&#60;</p>
-        </Link>
+        <div className="pages">
+
+          <div className="last-page">
+          {this.props.match.params.page !== "1"
+              ? <Link
+                  onClick={() => window.location.href = `/characters/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
+                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
+                </Link>
+              : ""}
+          </div>
+          <div className="next-page">
+            {this.props.charactersNextPage !== null && this.props.charactersNextPage != []
+              ? <Link
+                  onClick={() => window.location.href = `/characters/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
+                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
+                </Link>
+              : ""}
+          </div>
+
+        </div>
         <div className="characters">
           {/* filter images not available before map: "4c002e0305708" is a picture that shows "image not available" */}
           {this.props.characters.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
@@ -56,7 +75,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCharacters }, dispatch);
+  return bindActionCreators({ fetchCharacters, fetchCharactersNextPage }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharactersIndex);

@@ -16,14 +16,14 @@ class MarvelIndex extends Component {
     return (
       <div className="marvel-container">
         <div className="marvel-comics">
-          <Link to="/comics">
+          <Link to="/comics/page/1">
           <div className="card-category card-comics">
             COMICS
           </div>
           </Link>
         </div>
         <div className="marvel-characters">
-          <Link to="/characters">
+          <Link to="/characters/page/1">
             <div className="card-category card-characters">
               CHARACTERS
             </div>

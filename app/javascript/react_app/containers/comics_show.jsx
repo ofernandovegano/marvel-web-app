@@ -18,7 +18,7 @@ class ComicsShow extends Component {
       <div className="comic-show-container show-container">
 
         <div className="row">
-          
+
           <div className="col-12">
             <h1 className="header-show">{ this.props.comic.title }</h1>
           </div>
