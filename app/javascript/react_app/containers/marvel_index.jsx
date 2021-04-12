@@ -15,18 +15,20 @@ class MarvelIndex extends Component {
   render() {
     return (
       <div className="marvel-container">
-        <div className="marvel-index">
-          <div className="comics">
-            <Link to="/comics">
-            <p>To comics index</p>
-            </Link>
+        <div className="marvel-comics">
+          <Link to="/comics">
+          <div className="card-category card-comics">
+            COMICS
           </div>
-          <div className="characters">
-            <Link to="/characters">
-              <p>To Characters index</p>
-            </Link>
-          </div>
+          </Link>
         </div>
+        <div className="marvel-characters">
+          <Link to="/characters">
+            <div className="card-category card-characters">
+              CHARACTERS
+            </div>
+          </Link>
+      </div>
       </div>
     );
   };
