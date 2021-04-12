@@ -23,11 +23,11 @@ class ComicsShow extends Component {
             <h1 className="header-show">{ this.props.comic.title }</h1>
           </div>
 
-          <div className="col-4 img-show">
+          <div className="col-12 col-lg-4 img-show">
             <img src={`${this.props.comic.thumbnail.path}/portrait_uncanny.${this.props.comic.thumbnail.extension}`} className="comic-img-show start-img-show"/>
           </div>
 
-          <div className="col-8 show-info">
+          <div className="col-12 col-lg-8 show-info">
             <div className="col-12">
               <div className="description-and-btn-header">
                 <div>
