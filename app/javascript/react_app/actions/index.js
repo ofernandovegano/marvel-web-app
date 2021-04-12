@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config()
 
 export const FETCH_COMICS = 'FETCH_COMICS';
+export const FETCH_COMICS_NEXT_PAGE = 'FETCH_NEXT-COMICS-PAGE';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const SEARCH_COMICS = 'SEARCH_COMICS';
 export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS';
@@ -20,6 +21,7 @@ let md5Key = md5(`${timeStamp}${REACT_APP_MARVEL_PRIVATE_KEY}${REACT_APP_MARVEL_
 
 // FETCH_COMICS - Comics fetch API
 export function fetchComics(offset = 0) {
+   //offset fetch from page 1 is 0, so 1 * 100 - 100 is zero
   const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${offset}`;
   const promise = fetch(url)
     .then(r => r.json());
@@ -30,14 +32,14 @@ export function fetchComics(offset = 0) {
   };
 }
 
-// FETCH_NEXT-COMICS-PAGE - Comics fetch API
-// export function fetchComics(offset = 0) {
-//   const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${offset}`;
-//   const promise = fetch(url)
-//     .then(r => r.json());
+// FETCH_COMICS_NEXT_PAGE - Comics fetch API
+export function fetchComicsNextPage(offset) {
+  const url = `${BASE_URL}comics?ts=${timeStamp}&apikey=${REACT_APP_MARVEL_PUBLIC_KEY}&hash=${md5Key}&limit=100&offset=${offset*100}`;
+  const promise = fetch(url)
+    .then(r => r.json());
 
   return {
-    type: FETCH_COMICS,
+    type: FETCH_COMICS_NEXT_PAGE,
     payload: promise // Will be resolved by redux-promise
   };
 }

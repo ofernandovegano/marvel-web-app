@@ -5,23 +5,39 @@ import { Link } from 'react-router-dom';
 
 import SearchComics from './search_comics';
 
-import { fetchComics } from '../actions';
+import { fetchComics, fetchComicsNextPage } from '../actions';
 
 class ComicsIndex extends Component {
   componentWillMount() {
     const page = this.props.match.params.page
-    //offset fetch from page 1 is 0, so 1 * 100 - 100 is zero
-    this.props.fetchComics(page*100-100);
-
+    this.props.fetchComics(page);
+    this.props.fetchComicsNextPage(page);
   }
 
   render() {
     return (
       <div className="comics-container">
         < SearchComics />
+        <div className="pages">
 
-        {/* <p onClick={this.handleClick} className="back-to-last-page">&#62;&#62;</p> */}
-    
+          <div className="last-page">
+          {this.props.match.params.page !== "1"
+              ? <Link
+                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
+                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
+                </Link>
+              : ""}
+          </div>
+          <div className="next-page">
+            {this.props.comicsNextPage !== null && this.props.comicsNextPage != []
+              ? <Link
+                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
+                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
+                </Link>
+              : ""}
+          </div>
+
+        </div>
         <div className="comics">
           {/* filter images not available before map*/}
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
@@ -52,12 +68,13 @@ class ComicsIndex extends Component {
 
 function mapStateToProps(state) {
   return {
-    comics: state.comics
+    comics: state.comics,
+    comicsNextPage: state.comicsNextPage
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchComics }, dispatch);
+  return bindActionCreators({ fetchComics,fetchComicsNextPage }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ComicsIndex);
