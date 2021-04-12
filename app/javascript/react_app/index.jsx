@@ -24,6 +24,7 @@ import charactersReducer from './reducers/characters_reducer.js';
 import charactersNextPageReducer from './reducers/characters_next_page_reducer.js';
 import favoriteCharactersReducer from './reducers/favorite_characters_reducer.js';
 import favoriteComicsReducer from './reducers/favorite_comics_reducer.js';
+import lastPageIndexReducer from './reducers/last_page_index_reducer.js';
 
 
 // State and reducers
@@ -33,7 +34,8 @@ const reducers = combineReducers({
   favoriteCharacters: favoriteCharactersReducer,
   favoriteComics: favoriteComicsReducer,
   comicsNextPage: comicsNextPageReducer,
-  charactersNextPage: charactersNextPageReducer
+  charactersNextPage: charactersNextPageReducer,
+  lastPageIndex: lastPageIndexReducer
 });
 
 //Middlewares

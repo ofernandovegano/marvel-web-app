@@ -13,6 +13,7 @@ export const DESTROY_FAVORITE_COMIC = 'DESTROY_FAVORITE_COMIC';
 export const DESTROY_FAVORITE_CHARACTER = 'DESTROY_FAVORITE_CHARACTER';
 export const FETCH_FAVORITE_COMICS = 'FETCH_FAVORITE_COMICS';
 export const FETCH_FAVORITE_CHARACTERS = 'FETCH_FAVORITE_CHARACTERS';
+export const LAST_PAGE_INDEX = 'LAST_PAGE_INDEX';
 
 
 console.log(process.env)
@@ -160,4 +161,11 @@ export function destroyFavoriteCharacter(character, callback) {
     type: DESTROY_FAVORITE_CHARACTER,
     payload: character // Will be resolved by redux-promise
   };
+}
+
+export function lastPageIndex(page) {
+  return {
+    type: LAST_PAGE_INDEX,
+    payload: page
+  }
 }

@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 
 import SearchComics from './search_comics';
 
-import { fetchComics, fetchComicsNextPage } from '../actions';
+import { fetchComics, fetchComicsNextPage, lastPageIndex } from '../actions';
 
 class ComicsIndex extends Component {
   componentWillMount() {
     const page = this.props.match.params.page
     this.props.fetchComics(page);
     this.props.fetchComicsNextPage(page);
+    this.props.lastPageIndex(page);
   }
 
   render() {
@@ -61,6 +62,28 @@ class ComicsIndex extends Component {
             );
           })}
         </div>
+
+        <div className="pages">
+
+          <div className="last-page">
+          {this.props.match.params.page !== "1"
+              ? <Link
+                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
+                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
+                </Link>
+              : ""}
+          </div>
+          <div className="next-page">
+            {this.props.comicsNextPage !== null && this.props.comicsNextPage != []
+              ? <Link
+                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
+                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
+                </Link>
+              : ""}
+          </div>
+
+        </div>
+
       </div>
     );
   };
@@ -74,7 +97,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchComics,fetchComicsNextPage }, dispatch);
+  return bindActionCreators({ fetchComics,fetchComicsNextPage, lastPageIndex }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ComicsIndex);

@@ -23,6 +23,14 @@
                     label: false,
                     placeholder: 'Confirm Password',
                     input_html: { autocomplete: "new-password" } %>
+        <%= f.input :first_name,
+                    required: true,
+                    label: false,
+                    placeholder: 'First Name' %>
+        <%= f.input :last_name,
+                    required: true,
+                    label: false,
+                    placeholder: 'Last Name' %>
       </div>
 
       <div class="form-actions">
