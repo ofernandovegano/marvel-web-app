@@ -27,9 +27,13 @@
 .comic {
   display: flex;
   flex-direction: column;
-  width: 33%;
   padding: 5px;
   padding-bottom: 50px;
+  margin: 0 auto;
+}
+.comic-img-div img {
+  max-width: 90%;
+  width: auto;
 }
 .comic-title {
   text-align: center;

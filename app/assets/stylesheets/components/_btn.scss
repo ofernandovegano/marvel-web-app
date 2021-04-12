@@ -3,7 +3,7 @@
 }
 .btn-search {
   padding: 0.5rem 1rem;
-  width: 10rem;
+  width: 9rem;
   font-size: 0.8rem;
   background-color:$marvel-gray;
   border-radius: 5px;
@@ -13,3 +13,19 @@
 .btn-search:hover {
   background-color: goldenrod;
 }
+.btn-search-small {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-search-big {
+    display: none;
+  }
+  .btn-search-small {
+    display:inline-block;
+    width: 5.5rem;
+  }
+ }
+
+
+
