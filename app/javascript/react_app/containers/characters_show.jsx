@@ -22,11 +22,11 @@ class CharactersShow extends Component {
             <h1 className="header-show">{ this.props.character.name }</h1>
           </div>
 
-          <div className="col-4 img-show">
+          <div className="col-12 col-lg-4 img-show">
             <img src={`${this.props.character.thumbnail.path}/standard_fantastic.${this.props.character.thumbnail.extension}`} className="character-img start-img-show"/>
           </div>
 
-          <div className="col-8 show-info">
+          <div className="col-12 col-lg-8 show-info">
             <div className="col-12">
               <div className="description-and-btn-header">
                 <div>
