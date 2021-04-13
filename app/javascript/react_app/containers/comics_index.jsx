@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Pagination from '../components/pagination'
+
 import SearchComics from './search_comics';
 
 import { fetchComics, fetchComicsNextPage, lastPageIndex } from '../actions';
@@ -19,26 +21,7 @@ class ComicsIndex extends Component {
     return (
       <div className="comics-container">
         < SearchComics />
-        <div className="pages">
-
-          <div className="last-page">
-          {this.props.match.params.page !== "1"
-              ? <Link
-                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
-                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
-                </Link>
-              : ""}
-          </div>
-          <div className="next-page">
-            {this.props.comicsNextPage !== null && this.props.comicsNextPage != []
-              ? <Link
-                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
-                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
-                </Link>
-              : ""}
-          </div>
-
-        </div>
+        <Pagination id={this.props.match.params.page} key={this.props.match.params.page} page={this.props.match.params.page} nextPage={this.props.comicsNextPage} type='comics'/>
         <div className="comics">
           {/* filter images not available before map*/}
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
@@ -62,28 +45,7 @@ class ComicsIndex extends Component {
             );
           })}
         </div>
-
-        <div className="pages">
-
-          <div className="last-page">
-          {this.props.match.params.page !== "1"
-              ? <Link
-                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
-                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
-                </Link>
-              : ""}
-          </div>
-          <div className="next-page">
-            {this.props.comicsNextPage !== null && this.props.comicsNextPage != []
-              ? <Link
-                  onClick={() => window.location.href = `/comics/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
-                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
-                </Link>
-              : ""}
-          </div>
-
-        </div>
-
+        <Pagination id={this.props.match.params.page} key={this.props.match.params.page} page={this.props.match.params.page} nextPage={this.props.comicsNextPage} type='comics'/>
       </div>
     );
   };

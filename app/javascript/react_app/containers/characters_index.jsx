@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Pagination from '../components/pagination'
+
 import SearchCharacters from './search_characters';
 
 
@@ -20,26 +22,7 @@ class CharactersIndex extends Component {
     return (
       <div className="characters-container">
         < SearchCharacters />
-        <div className="pages">
-
-          <div className="last-page">
-          {this.props.match.params.page !== "1"
-              ? <Link
-                  onClick={() => window.location.href = `/characters/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
-                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
-                </Link>
-              : ""}
-          </div>
-          <div className="next-page">
-            {this.props.charactersNextPage !== null && this.props.charactersNextPage != []
-              ? <Link
-                  onClick={() => window.location.href = `/characters/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
-                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
-                </Link>
-              : ""}
-          </div>
-
-        </div>
+        <Pagination id={this.props.match.params.page} key={this.props.match.params.page} page={this.props.match.params.page} nextPage={this.props.charactersNextPage} type='characters'/>
         <div className="characters">
           {/* filter images not available before map: "4c002e0305708" is a picture that shows "image not available" */}
           {this.props.characters.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
@@ -64,26 +47,7 @@ class CharactersIndex extends Component {
             );
           })}
         </div>
-        <div className="pages">
-
-          <div className="last-page">
-          {this.props.match.params.page !== "1"
-              ? <Link
-                  onClick={() => window.location.href = `/characters/page/${parseInt(this.props.match.params.page, 10) - 1}`} className='last-page' >
-                  &#60;&#60; {parseInt(this.props.match.params.page, 10) - 1}
-                </Link>
-              : ""}
-          </div>
-          <div className="next-page">
-            {this.props.charactersNextPage !== null && this.props.charactersNextPage != []
-              ? <Link
-                  onClick={() => window.location.href = `/characters/page/${parseInt(this.props.match.params.page, 10) + 1}`} className='next-page' >
-                  {parseInt(this.props.match.params.page, 10) + 1} &#62;&#62;
-                </Link>
-              : ""}
-          </div>
-
-        </div>
+        <Pagination id={this.props.match.params.page} key={this.props.match.params.page} page={this.props.match.params.page} nextPage={this.props.charactersNextPage} type='characters'/>
       </div>
     );
   };
