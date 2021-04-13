@@ -9,7 +9,7 @@ import { addToFavorites } from '../actions';
 class CharactersShow extends Component {
   handleClick = () => {
     this.props.addToFavorites(this.props.character, 'character', () => {
-      this.props.history.push('/characters')});
+      this.props.history.push(`/characters/page/${this.props.lastPageIndex}`)});
   }
 
   render() {

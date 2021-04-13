@@ -10,7 +10,7 @@ class ComicsShow extends Component {
 
   handleClick = () => {
     this.props.addToFavorites(this.props.comic, 'comic', () => {
-      this.props.history.push('/comics')});
+      this.props.history.push(`/comics/page/${this.props.lastPageIndex}`)});
   }
 
   render() {
