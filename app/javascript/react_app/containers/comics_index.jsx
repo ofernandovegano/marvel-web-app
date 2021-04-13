@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Pagination from '../components/pagination'
+import Comic from '../components/comic'
 
 import SearchComics from './search_comics';
 
@@ -27,21 +28,7 @@ class ComicsIndex extends Component {
           {this.props.comics.filter(character => character.thumbnail.path.substring(44, 63) !== "image_not_available")
             .map((comic) => {
               return (
-              < div key = { comic.id } className = "comic" >
-              
-                <Link to={`/comics/${comic.id}`} key={comic.id}>
-                  < div>
-                    <div className="comic-img-div">
-                        <img src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`} className="comic-img" />
-                      
-                    </div>
-                    <div className="comic-title">
-                        {comic.title.length > 30 ? `${comic.title.slice(0, 30)}...` : comic.title }
-                    </div>
-                  </div>
-                </Link>
-                  
-              </div>
+              <Comic id={comic.id} key={comic.id} comic={comic}/>
             );
           })}
         </div>
