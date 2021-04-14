@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchFavoriteComics, fetchFavoriteCharacters, fetchCharacters, fetchComics, destroyFavoriteComic, destroyFavoriteCharacter } from '../actions/index';
+import { fetchCharacters, fetchComics, destroyFavoriteComic, destroyFavoriteCharacter } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 class CharactersIndex extends Component {

@@ -5,6 +5,8 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { addToFavorites } from '../actions';
 
+import ComicInfoDescription from '../components/comic_info_description'
+
 
 class ComicsShow extends Component {
 
@@ -47,24 +49,6 @@ class ComicsShow extends Component {
                   </div>
                   : ""
                 }
-                {this.props.comic.characters.items[0] ?
-                  <div className="info-show-details">
-                    <p><strong>characters: </strong></p>
-                    {this.props.comic.characters.items.map((character, index) => {
-                      return (<span key={character.name} >{(index ? ', ' : "") + character.name}</span>)
-                    })}<span>.</span>
-                  </div>
-                  : ""
-                }
-                {this.props.comic.stories.items[0] ?
-                  <div className="info-show-details">
-                    <p><strong>Stories: </strong></p>
-                    {this.props.comic.stories.items.map((story, index) => {
-                      return (<span key={story.name} >{(index ? ', ' : "") + story.name}</span>)
-                    })}<span>.</span>
-                  </div>
-                  : ""
-                }
                 {this.props.comic.series.name ?
                   <div className="info-show-details">
                     <p><strong>Series: </strong></p>
@@ -72,25 +56,10 @@ class ComicsShow extends Component {
                   </div>
                   : ""
                 }
-                {this.props.comic.events.items[0] ?
-                  <div className="info-show-details">
-                    <p><strong>Events: </strong></p>
-                    {this.props.comic.events.items.map((event, index) => {
-                      return (<span key={event.name} >{(index ? ', ' : "") + event.name}</span>)
-                    })}<span>.</span>
-                  </div>
-                  : ""
-                }
-                {this.props.comic.creators.items[0] ?
-                  <div className="info-show-details">
-                    <p><strong>Events: </strong></p>
-                    {this.props.comic.creators.items.map((creator, index) => {
-                      return (<span key={creator.name} >{(index ? ', ' : "") + creator.name}</span>)
-                    })}<span>.</span>
-                  </div>
-                  : ""
-                }
-
+                < ComicInfoDescription key={ this.props.comic.characters.items } id= { this.props.comic.characters.items } info={this.props.comic.characters.items} typeDescription='Characters' />
+                < ComicInfoDescription key={ this.props.comic.stories.items } id= { this.props.comic.stories.items } info={this.props.comic.stories.items} typeDescription='Stories' />
+                < ComicInfoDescription key={ this.props.comic.events.items } id= { this.props.comic.events.items } info={this.props.comic.events.items} typeDescription='Events' />
+                < ComicInfoDescription key={ this.props.comic.creators.items } id= { this.props.comic.creators.items } info={this.props.comic.creators.items} typeDescription='Creators' />
               </div>
             </div>          
           </div>
