@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// import ComicsIndex from './comics_index';
+import BannerIndex from '../components/banner_index'
 
 import { fetchComics } from '../actions';
 
@@ -15,20 +15,8 @@ class MarvelIndex extends Component {
   render() {
     return (
       <div className="marvel-container">
-        <div className="marvel-comics">
-          <Link to="/comics/page/1">
-          <div className="card-category card-comics">
-            COMICS
-          </div>
-          </Link>
-        </div>
-        <div className="marvel-characters">
-          <Link to="/characters/page/1">
-            <div className="card-category card-characters">
-              CHARACTERS
-            </div>
-          </Link>
-      </div>
+        <BannerIndex key='comics' id='comics' bannerType='comics' />
+        <BannerIndex key='characters' id='characters' bannerType='characters' />
       </div>
     );
   };
