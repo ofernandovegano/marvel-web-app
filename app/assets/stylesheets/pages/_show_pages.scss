@@ -1,0 +1,34 @@
+.header-show {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: rgb(165, 18, 18);
+}
+.show-container {
+  min-height: 100vh;
+}
+.img-show {
+  display: flex;
+}
+.show-info {
+  display: flex;
+}
+.description-and-btn-header {
+  display: flex;
+  justify-content:space-between;
+  margin: 35px 0;
+}
+.about-header {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.info-show-details {
+  margin-bottom: 15px;
+}
+.start-img-show {
+  align-self: flex-start;
+  margin: 0 auto;
+  margin-top: 35px;
+}
